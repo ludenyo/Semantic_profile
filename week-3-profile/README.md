@@ -11,15 +11,19 @@ The Week 3 version continues the responsive semantic profile page from Week 2 an
 - Loading, success, and error states for the API section
 - Dynamic profile rendering with DOM methods and `textContent`
 - External JavaScript in `main.js`; no inline event handlers
+- External styles in `styles.css`, linked from the HTML document
+- Profile photo stored in the `assets/` folder
 
 ## Project structure
 
 ```text
 week-3-profile/
 ├── index.html
+├── styles.css
 ├── main.js
-├── favour-ludenyo.jpeg
 ├── README.md
+├── assets/
+│   └── favour-ludenyo.jpeg
 └── screenshots/
     ├── mobile-375px.png
     ├── tablet-768px.png
@@ -28,7 +32,7 @@ week-3-profile/
 
 ## Run the project
 
-Open `index.html` in a browser, or open the folder in VS Code and use Live Server. The live profile section needs an internet connection. The screenshots folder contains the responsive viewport captures carried over from Week 2.
+Open the folder in VS Code and use Live Server, or run `python3 -m http.server 8000` from this folder and visit `http://localhost:8000`. The live profile section needs an internet connection. The screenshots folder contains the responsive viewport captures carried over from Week 2.
 
 ## Author
 
