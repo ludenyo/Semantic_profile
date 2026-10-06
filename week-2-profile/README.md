@@ -13,14 +13,18 @@ A personal profile portfolio page built for the Week 2 frontend development assi
 - A single-column mobile layout, two-column tablet layout, and three-column desktop layout
 - Mobile-first CSS with `min-width: 768px` and `min-width: 1024px` media queries
 - Fluid images and responsive units to prevent horizontal overflow
+- External stylesheet in `styles.css`, linked from the HTML page
+- Profile photo stored in the `assets/` folder
 
 ## Project structure
 
 ```text
 week-2-profile/
 ├── index.html
-├── favour-ludenyo.jpeg
+├── styles.css
 ├── README.md
+├── assets/
+│   └── favour-ludenyo.jpeg
 └── screenshots/
     ├── mobile-375px.png
     ├── tablet-768px.png

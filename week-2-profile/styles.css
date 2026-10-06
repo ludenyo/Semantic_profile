@@ -1,0 +1,246 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #172033;
+  background: #f4f7fc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 20rem;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+header,
+nav,
+main,
+footer {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+
+header,
+section,
+footer {
+  background: #ffffff;
+  border: 1px solid #d9e0ec;
+  border-radius: 0.75rem;
+}
+
+header {
+  margin-top: 1rem;
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 7vw, 2.75rem);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: clamp(1.35rem, 5vw, 1.75rem);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  background: #172033;
+}
+
+nav a {
+  padding: 0.4rem 0.55rem;
+  border-radius: 0.3rem;
+  color: #ffffff;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background: #3667d6;
+  outline: none;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+section {
+  min-width: 0;
+  padding: 1.25rem;
+  scroll-margin-top: 1rem;
+}
+
+.about-content {
+  display: grid;
+  gap: 1rem;
+}
+
+.about-content p,
+article p {
+  margin-bottom: 0;
+}
+
+.profile-photo-frame {
+  width: min(100%, 11rem);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  overflow: hidden;
+  border: 0.25rem solid #edf3ff;
+  border-radius: 50%;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+li + li {
+  margin-top: 0.5rem;
+}
+
+article {
+  padding: 1rem;
+  border-left: 0.3rem solid #3667d6;
+  border-radius: 0.5rem;
+  background: #edf3ff;
+}
+
+article h3 {
+  margin-top: 0;
+}
+
+footer {
+  margin-bottom: 1rem;
+  padding: 1.25rem;
+}
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.footer-meta p {
+  margin: 0;
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0;
+}
+
+.profile-links a {
+  color: #214da7;
+}
+
+/* Tablet: two-column content layout. */
+@media (min-width: 768px) {
+  header,
+  nav,
+  main,
+  footer {
+    width: min(100% - 3rem, 72rem);
+  }
+
+  header {
+    padding: 2.5rem;
+  }
+
+  nav {
+    justify-content: flex-start;
+    gap: 0.5rem 1rem;
+    padding-inline: 1.25rem;
+  }
+
+  main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  #about,
+  #contact {
+    grid-column: 1 / -1;
+  }
+
+  .about-content {
+    grid-template-columns: minmax(10rem, 12rem) minmax(0, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .profile-photo-frame {
+    width: 100%;
+  }
+
+  .footer-meta {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* Desktop: three-column content layout. */
+@media (min-width: 1024px) {
+  header,
+  nav,
+  main,
+  footer {
+    width: min(100% - 4rem, 75rem);
+  }
+
+  main {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  #about {
+    grid-column: 1 / -1;
+  }
+
+  #contact {
+    grid-column: auto;
+  }
+
+  section {
+    padding: 1.5rem;
+  }
+}
