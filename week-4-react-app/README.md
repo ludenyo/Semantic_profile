@@ -1,4 +1,4 @@
-# Northstar People — Week 4 React App
+# Northstar People - Week 4 React App
 
 A responsive team directory built with React and Vite for the Week 4 frontend assignment. It practices reusable components, props, list rendering, and interactive state. Most directory entries are fictional examples; the owner profile and Gmail contact action are personalized.
 
