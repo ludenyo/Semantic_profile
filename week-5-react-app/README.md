@@ -1,4 +1,4 @@
-# Week 5 — Kairos Logo Concepts
+# Week 5 — Logo Concepts
 
 A responsive recreation of the Kairos Spatial Solutions logo concept board, followed by a controlled feedback form. Built with React, Vite, and Tailwind CSS.
 
