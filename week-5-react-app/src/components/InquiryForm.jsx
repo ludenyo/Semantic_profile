@@ -1,15 +1,6 @@
 import { useState } from "react";
 import FormField from "./FormField.jsx";
-
-const initialFormData = {
-  fullName: "",
-  email: "",
-  company: "",
-  interest: "",
-  contactMethod: "",
-  message: "",
-  agreeToTerms: false,
-};
+import { getFieldAction } from "../state/formState.js";
 
 function validateForm(formData) {
   const errors = {};
@@ -44,35 +35,7 @@ function validateForm(formData) {
 const fieldClassName =
   "min-h-12 w-full rounded-lg border border-line bg-white px-3.5 py-3 text-sm text-ink shadow-sm outline-none transition placeholder:text-muted/70 focus:border-brand focus:ring-2 focus:ring-brand/15 disabled:cursor-not-allowed disabled:opacity-70";
 
-function SuccessMessage({ name, onReset }) {
-  return (
-    <section
-      className="rounded-xl border border-success/20 bg-success/5 p-6 sm:p-8"
-      aria-live="polite"
-      role="status"
-    >
-      <span className="mb-4 grid h-12 w-12 place-items-center rounded-full bg-success/10 text-2xl text-success" aria-hidden="true">
-        ✓
-      </span>
-      <h3 className="font-display text-2xl font-bold tracking-tight text-ink">
-        Thanks, {name.trim()}.
-      </h3>
-      <p className="mt-2 max-w-md text-sm leading-relaxed text-muted">
-        Your feedback is ready. This classroom demo does not send or store your details.
-      </p>
-      <button
-        className="mt-6 rounded-lg border border-line bg-white px-4 py-2.5 text-sm font-semibold text-ink transition hover:border-brand hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
-        type="button"
-        onClick={onReset}
-      >
-        Send more feedback
-      </button>
-    </section>
-  );
-}
-
-export default function InquiryForm() {
-  const [formData, setFormData] = useState(initialFormData);
+export default function InquiryForm({ formData, dispatch, onSuccess }) {
   const [touchedFields, setTouchedFields] = useState({});
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const [submissionState, setSubmissionState] = useState("idle");
@@ -83,10 +46,8 @@ export default function InquiryForm() {
 
   function handleChange(event) {
     const { name, type, value, checked } = event.target;
-    setFormData((currentFormData) => ({
-      ...currentFormData,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    const action = getFieldAction(name, type === "checkbox" ? checked : value);
+    if (action) dispatch(action);
     setTouchedFields((currentTouchedFields) => ({
       ...currentTouchedFields,
       [name]: true,
@@ -104,13 +65,6 @@ export default function InquiryForm() {
     }));
   }
 
-  function resetForm() {
-    setFormData(initialFormData);
-    setTouchedFields({});
-    setSubmitAttempted(false);
-    setSubmissionState("idle");
-  }
-
   async function handleSubmit(event) {
     event.preventDefault();
     setSubmitAttempted(true);
@@ -122,14 +76,10 @@ export default function InquiryForm() {
     try {
       // A short delay makes the submitting state visible in this frontend-only demo.
       await new Promise((resolve) => window.setTimeout(resolve, 700));
-      setSubmissionState("success");
+      onSuccess();
     } catch {
       setSubmissionState("error");
     }
-  }
-
-  if (submissionState === "success") {
-    return <SuccessMessage name={formData.fullName} onReset={resetForm} />;
   }
 
   return (
